@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const login = require('./request/login');
 const kairosApp = express();
 
-const port = 9080;
+var port = process.env.PORT || 9080;
 
 // Open MySql connection
 const dbConn = sqlManager.connectDB();
