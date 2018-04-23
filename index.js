@@ -2,6 +2,8 @@ const express = require('express');
 const sqlManager = require('./sql/env.config');
 const bodyParser = require('body-parser');
 const login = require('./request/login');
+const gmailSender = require('./request/gmail');
+const nodemailer = require('./request/nodemailer');
 const kairosApp = express();
 
 var port = process.env.PORT || 9080;
@@ -82,6 +84,19 @@ kairosApp.get('/vacations', function(req, res){
     sqlManager.getVacations(dbConn, params, res);
 });
 
+/**
+ * Entry point to ask vacations and send email to the ambassadors
+ */
+kairosApp.get('/vacations_2', function(req, res){
+    const fakeData = {
+        teamMate: 'Alejandro',
+        startDate: '01/05/2018',
+        endDate: '05/05/2018'
+    };
+    //gmailSender.sendEmail( fakeData, res);
+    nodemailer.sendEmail( fakeData, res);
+});
+
 /*kairosApp.get('/vacations', function(req, res){
     // Should send spent vacations vs free vacations
     console.log('Entry point to retrieve vacations information about a user');
@@ -98,14 +113,14 @@ kairosApp.get('/vacations', function(req, res){
     res.status(200).send(JSON.stringify(fakeData, null, 4));
 });*/
 
-kairosApp.post('/vacations', function(req, res){
+/*kairosApp.post('/vacations', function(req, res){
     console.log('Entry point to ask for some vacations');
     // Should send userID, startDate, endDate
     const fakeData = {
         result: 'ok'
     };
     res.status(200).send(JSON.stringify(fakeData, null, 4));
-});
+});*/
 
 kairosApp.post('/permission', function(req, res){
     console.log('Entry point to inform about some permission');

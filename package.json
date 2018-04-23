@@ -11,9 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "gmail-send": "^1.2.14",
     "google-auth-library": "^1.4.0",
     "mysql": "^2.15.0",
-    "nodemailer": "^4.6.3",
+    "nodemailer": "^4.6.4",
     "npm": "^5.7.1"
   }
 }
