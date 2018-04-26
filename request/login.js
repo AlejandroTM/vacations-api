@@ -1,5 +1,5 @@
 const {OAuth2Client} = require('google-auth-library');
-const CLIENT_ID = '917805098007-da604o3ipnjpdkqc8itddmtl0k9ncg0q.apps.googleusercontent.com';
+const CLIENT_ID = '968561356994-2krhtmu41b03no95ea0vn1ef4fn951rf.apps.googleusercontent.com';
 const client = new OAuth2Client(CLIENT_ID);
 const COMPANY_DOMAIN = 'kairosds.com';
 
