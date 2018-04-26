@@ -9,7 +9,7 @@ const _getSubject = function(teamMate){
 };
 
 const _getMessage = function(options){
-    return `Solicitud de vacaciones de ${options.teamMate} desde ${options.starDate} hasta ${options.endDate}`;
+    return `<p>Solicitud de vacaciones de <b>${options.teamMate}</b> desde <b>${options.startDate}</b> hasta <b>${options.endDate}</b></p><br></br>`;
 };
 
 const sendEmailService = function( options, res ){
@@ -30,7 +30,7 @@ const sendEmail = function(options, res) {
     });
 
     let mailOptions = {
-        from: '<vacations@kairosds.com>',
+        from: 'Vacations Email <vacations@kairosds.com>',
         to: DESTINATION,
         subject: _getSubject(vacationsUser),
         html: _getMessage(options)
@@ -38,9 +38,9 @@ const sendEmail = function(options, res) {
 
     transporter.sendMail(mailOptions, (err, info) => {
         if(err) {
-            console.log("Error sending email: " + err);
+            console.log("Error sending email: " + JSON.stringify(err));
         }else{
-            console.log('[SendEmail OK] ' + res);
+            console.log('[SendEmail OK] ' + JSON.stringify(res));
             res.status(200).send({rslt: 'OK', data: credentials});
         }
     })

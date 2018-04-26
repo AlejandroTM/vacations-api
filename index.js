@@ -2,7 +2,6 @@ const express = require('express');
 const sqlManager = require('./sql/env.config');
 const bodyParser = require('body-parser');
 const login = require('./request/login');
-const gmailSender = require('./request/gmail');
 const nodemailer = require('./request/nodemailer');
 const kairosApp = express();
 
@@ -87,14 +86,9 @@ kairosApp.get('/vacations', function(req, res){
 /**
  * Entry point to ask vacations and send email to the ambassadors
  */
-kairosApp.get('/vacations_2', function(req, res){
-    const fakeData = {
-        teamMate: 'Alejandro',
-        startDate: '01/05/2018',
-        endDate: '05/05/2018'
-    };
-    //gmailSender.sendEmail( fakeData, res);
-    nodemailer.sendEmail( fakeData, res);
+kairosApp.post('/vacations', function(req, res){
+    const data = req.body;
+    nodemailer.sendEmail( data, res );
 });
 
 /*kairosApp.get('/vacations', function(req, res){
