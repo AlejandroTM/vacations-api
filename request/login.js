@@ -25,15 +25,6 @@ const validateGoogleToken = function (clientData, response) {
     verify().catch(console.error);
 };
 
-const config = {
-    apiKey: "AIzaSyBjJYKWw03IMBwfMjv6QdDyfv1ltTqdFUA",
-    authDomain: "kairos-employees.firebaseapp.com",
-    databaseURL: "https://kairos-employees.firebaseio.com",
-    projectId: "kairos-employees",
-    storageBucket: "kairos-employees.appspot.com",
-    messagingSenderId: "391465752953"
-};
-
 const loginFirebase = function (id_token) {
 
     /*firebase.auth().signInWithCredential(credential).then(u => {
