@@ -1,14 +1,15 @@
 const { OAuth2Client } = require('google-auth-library');
 const firebase = require('firebase');
-const CLIENT_ID = '391465752953-3tcok1vqo56nb7f7h3soo4060ni72q3a.apps.googleusercontent.com';
-const client = new OAuth2Client(CLIENT_ID);
+const certs = require('../cert.json');
+//const CLIENT_ID = '391465752953-3tcok1vqo56nb7f7h3soo4060ni72q3a.apps.googleusercontent.com';
+const client = new OAuth2Client(certs.CLIENT_ID);
 const COMPANY_DOMAIN = 'kairosds.com';
 
 const validateGoogleToken = function (clientData, response) {
     async function verify() {
         const ticket = await client.verifyIdToken({
             idToken: clientData.idToken,
-            audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+            audience: certs.CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
             // Or, if multiple clients access the backend:
             //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
         });
