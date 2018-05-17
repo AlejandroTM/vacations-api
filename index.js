@@ -5,7 +5,7 @@ const login = require('./request/login');
 const nodemailer = require('./request/nodemailer');
 const kairosApp = express();
 
-var port = process.env.PORT || 9080;
+const port = process.env.PORT || 9080;
 
 // Open MySql connection
 const dbConn = sqlManager.connectDB();

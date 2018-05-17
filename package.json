@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "firebase": "^4.13.1",
+    "firebase-admin": "^5.12.1",
     "gmail-send": "^1.2.14",
     "google-auth-library": "^1.4.0",
     "mysql": "^2.15.0",
